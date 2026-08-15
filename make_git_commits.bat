@@ -1,6 +1,7 @@
 @echo off
 echo ========================================================
-echo   SyncDoc Git Repository Initialization & 10 Commits
+echo   SyncDoc Git Setup for Branch: Frontend-jyoti
+echo   Repo: https://github.com/Harshitrop/SyncDoc.git
 echo ========================================================
 
 git init
@@ -35,6 +36,11 @@ git commit -m "feat(simulator): Build dual-user split simulator view for real-ti
 git add src/components/ASTInspector/ASTGraph.tsx src/components/ASTInspector/JSONInspector.tsx src/App.tsx src/main.tsx index.html standalone.html src/index.css
 git commit -m "feat(theme): Upgrade design system with Midnight Violet, Gold, and Pearl Light theme presets"
 
+git branch -M Frontend-jyoti
+git remote remove origin 2>nul
+git remote add origin https://github.com/Harshitrop/SyncDoc.git
+
 echo ========================================================
-echo   SUCCESS! 10 Git Commits Created Successfully.
+echo   SUCCESS! 10 Commits Created for branch Frontend-jyoti
+echo   Now run: git push -u origin Frontend-jyoti --force
 echo ========================================================
