@@ -6,8 +6,8 @@ echo ========================================================
 
 git init
 
-git add package.json tsconfig.json vite.config.ts tailwind.config.js postcss.config.js .gitignore .vscode/
-git commit -m "feat(init): Initialize Vite + React + TypeScript + Tailwind project scaffold"
+git add package.json tsconfig.json vite.config.ts tailwind.config.js postcss.config.js .gitignore .vscode/ README.md
+git commit -m "feat(init): Initialize Vite + React + TypeScript + Tailwind project scaffold with README"
 
 git add src/types/ast.ts src/vite-env.d.ts
 git commit -m "feat(types): Define AST Node schema, CRDT log entry, and User Presence interfaces"
