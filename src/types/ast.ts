@@ -5,19 +5,21 @@ export type BlockType =
   | 'callout' 
   | 'table' 
   | 'task' 
-  | 'math';
+  | 'math'
+  | 'image';
 
 export interface ASTNode {
   id: string;
   type: BlockType;
   content: string;
-  level?: 1 | 2 | 3; // for headings
-  language?: string; // for code blocks
-  variant?: 'info' | 'warning' | 'success' | 'danger'; // for callouts
-  checked?: boolean; // for tasks
-  tableData?: string[][]; // for tables
-  formula?: string; // for math/diagrams
-  lockedBy?: string | null; // User ID who locked this block
+  level?: 1 | 2 | 3;
+  language?: string;
+  variant?: 'info' | 'warning' | 'success' | 'danger';
+  checked?: boolean;
+  tableData?: string[][];
+  formula?: string;
+  imageUrl?: string;
+  lockedBy?: string | null;
   lastModifiedBy?: string;
   version: number;
   timestamp: string;
