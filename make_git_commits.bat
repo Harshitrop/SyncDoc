@@ -1,6 +1,7 @@
 @echo off
 echo ========================================================
-echo   SyncDoc Git Setup for Branch: Frontend-jyoti
+echo   SyncDoc Full-Stack Final Review Setup (Week 1 - Week 4)
+echo   Branch: Frontend-jyoti
 echo   Repo: https://github.com/Harshitrop/SyncDoc.git
 echo ========================================================
 
@@ -33,14 +34,17 @@ git commit -m "feat(presence): Implement active user avatars, typing indicators,
 git add src/components/SplitSimulator.tsx src/components/CRDTMatrix/NetworkDeltas.tsx
 git commit -m "feat(simulator): Build dual-user split simulator view for real-time concurrent editing demo"
 
-git add src/components/ASTInspector/ASTGraph.tsx src/components/ASTInspector/JSONInspector.tsx src/App.tsx src/main.tsx index.html standalone.html src/index.css SyncDoc_Mid_Review_Presentation_Guide.html SyncDoc_Mid_Review_Presentation_Guide.md
-git commit -m "feat(theme): Upgrade design system with Midnight Violet, Gold, and Pearl Light theme presets & presentation guide"
+git add backend/
+git commit -m "feat(backend): Build Express REST & Socket.io CRDT server, Mongoose AST model & DOMPurify pipeline"
+
+git add src/components/SecurityPipeline/ src/components/VersionHistory/ src/components/ASTInspector/ src/App.tsx src/main.tsx index.html standalone.html src/index.css SyncDoc_Mid_Review_Presentation_Guide.html SyncDoc_Mid_Review_Presentation_Guide.md SyncDoc_Weekly_WriteUp_Week1_to_Week4.md
+git commit -m "feat(final): Complete Week 3 & Week 4 polish with DOMPurify XSS guard, Version History & human theme design"
 
 git branch -M Frontend-jyoti
 git remote remove origin 2>nul
 git remote add origin https://github.com/Harshitrop/SyncDoc.git
 
 echo ========================================================
-echo   SUCCESS! 10 Commits Created for branch Frontend-jyoti
+echo   SUCCESS! Final Commits Created for branch Frontend-jyoti
 echo   Now run: git push -u origin Frontend-jyoti --force
 echo ========================================================

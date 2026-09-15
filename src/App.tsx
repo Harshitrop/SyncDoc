@@ -9,6 +9,8 @@ import { JSONInspector } from './components/ASTInspector/JSONInspector';
 import { NetworkDeltas } from './components/CRDTMatrix/NetworkDeltas';
 import { SplitSimulator } from './components/SplitSimulator';
 import { InviteModal } from './components/InviteModal';
+import { DOMPurifyModal } from './components/SecurityPipeline/DOMPurifyModal';
+import { HistoryTimeline } from './components/VersionHistory/HistoryTimeline';
 
 export function App() {
   const {
@@ -34,6 +36,8 @@ export function App() {
   const [isSplitView, setIsSplitView] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(true);
   const [isInviteOpen, setIsInviteOpen] = useState(false);
+  const [isSecurityOpen, setIsSecurityOpen] = useState(false);
+  const [isHistoryOpen, setIsHistoryOpen] = useState(false);
 
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
@@ -69,6 +73,8 @@ export function App() {
           setIsSplitView(false);
         }}
         onOpenInvite={() => setIsInviteOpen(true)}
+        onOpenSecurity={() => setIsSecurityOpen(true)}
+        onOpenHistory={() => setIsHistoryOpen(true)}
         onTriggerConflictDemo={triggerConflictSimulation}
       />
 
@@ -144,6 +150,20 @@ export function App() {
         isOpen={isInviteOpen}
         onClose={() => setIsInviteOpen(false)}
         collaborators={collaborators}
+      />
+
+      {/* DOMPurify Security & PDF Modal (Week 3 & 4) */}
+      <DOMPurifyModal
+        isOpen={isSecurityOpen}
+        onClose={() => setIsSecurityOpen(false)}
+        doc={doc}
+      />
+
+      {/* Time Travel Version History Modal (Week 4) */}
+      <HistoryTimeline
+        isOpen={isHistoryOpen}
+        onClose={() => setIsHistoryOpen(false)}
+        doc={doc}
       />
     </div>
   );
