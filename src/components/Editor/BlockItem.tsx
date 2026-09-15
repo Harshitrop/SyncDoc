@@ -110,51 +110,53 @@ export const BlockItem: React.FC<BlockItemProps> = ({
         setShowToolbar(false);
       }}
       onClick={onFocus}
-      className={`group relative p-2 md:p-3 rounded-2xl transition-all duration-200 ${
+      className={`group relative p-4 md:p-5 rounded-3xl transition-all duration-200 shadow-xl ${
         isLocked
-          ? 'bg-slate-900/80 border-2 glow-border-amber ring-2 ring-amber-500/20'
+          ? 'bg-slate-900/90 border-2 glow-border-amber ring-2 ring-amber-500/20'
           : isActive
-          ? 'bg-slate-900/50 border border-cyan-500/40 ring-1 ring-cyan-500/20 shadow-lg'
+          ? 'bg-slate-900/80 border border-purple-500/60 glow-border-purple ring-2 ring-purple-500/20'
           : isHovered
-          ? 'bg-slate-900/30 border border-slate-800/80'
-          : 'border border-transparent'
+          ? 'bg-slate-900/60 border border-slate-800'
+          : 'bg-slate-900/40 border border-slate-800/80'
       }`}
     >
-      {/* Remote Presence & Lock Indicator (Week 2 Visual Indicator Requirement) */}
+      {/* Remote Presence & Lock Indicator */}
       {lockingUser && (
         <div
-          className="absolute -top-3 right-4 px-2.5 py-0.5 rounded-full text-[10px] font-bold text-slate-950 flex items-center space-x-1 shadow-lg z-20 animate-bounce"
+          className="absolute -top-3 right-5 px-3 py-1 rounded-full text-[11px] font-extrabold text-slate-950 flex items-center space-x-1.5 shadow-xl z-20 animate-bounce"
           style={{ backgroundColor: lockingUser.color }}
         >
-          <LockIcon className="w-3 h-3 text-slate-950" />
+          <LockIcon className="w-3.5 h-3.5 text-slate-950" />
           <span>{lockingUser.name} is editing...</span>
         </div>
       )}
 
-      {/* Block Meta Tag (Hover State) */}
-      {isHovered && !lockingUser && (
-        <div className="absolute -top-2.5 right-4 px-2 py-0.5 rounded-md bg-slate-900 border border-slate-800 text-[10px] font-mono text-slate-400 flex items-center space-x-1.5 opacity-90 z-20">
-          <span className="text-cyan-400 font-bold">#{node.id}</span>
-          <span>v{node.version}</span>
-        </div>
-      )}
+      {/* Block Header Meta Badge */}
+      <div className="flex items-center justify-between text-[10px] font-mono text-slate-400 mb-2">
+        <span className="uppercase text-purple-400 font-extrabold tracking-wider bg-purple-950/80 px-2 py-0.5 rounded border border-purple-800">
+          {node.type}
+        </span>
+        <span className="text-slate-400">
+          v{node.version} • by {node.lastModifiedBy || 'Jyoti'}
+        </span>
+      </div>
 
-      {/* Left Handle & Add Block Trigger */}
+      {/* Left Add Block Context Trigger */}
       {isHovered && !lockingUser && (
-        <div className="absolute -left-9 top-3 flex items-center space-x-1 z-20">
+        <div className="absolute -left-9 top-4 flex items-center space-x-1 z-20">
           <button
             onClick={() => setShowToolbar(!showToolbar)}
-            className="p-1 rounded-lg bg-slate-800 text-slate-400 hover:text-cyan-300 hover:bg-slate-700 transition-all shadow-md"
-            title="Add Block"
+            className="p-1.5 rounded-xl bg-purple-600 text-white hover:bg-purple-500 transition-all shadow-lg"
+            title="Add AST Block"
           >
             <PlusIcon className="w-3.5 h-3.5" />
           </button>
         </div>
       )}
 
-      {/* Floating Toolbar Context */}
+      {/* Floating Toolbar */}
       {showToolbar && (
-        <div className="absolute -left-9 top-10 z-30">
+        <div className="absolute -left-9 top-12 z-30">
           <InlineToolbar
             onAddBlock={(type) => {
               onAddBlockAfter(node.id, type);
@@ -165,7 +167,7 @@ export const BlockItem: React.FC<BlockItemProps> = ({
         </div>
       )}
 
-      {/* Main Block Content */}
+      {/* Main Block Payload Content */}
       <div className="w-full">
         {renderBlockContent()}
       </div>
